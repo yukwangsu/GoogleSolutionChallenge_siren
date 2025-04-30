@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_siren/screens/home_screen.dart';
 import 'package:flutter_siren/screens/signup_screen.dart';
+import 'package:flutter_siren/screens/voice_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
