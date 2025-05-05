@@ -28,12 +28,12 @@ class _SplashScreenState extends State<SplashScreen> {
     // wait 1.5s
     await Future.delayed(const Duration(milliseconds: 1500));
     if (result == 0) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
     } else if (result == 1) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
@@ -49,10 +49,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       body: Center(
-          // child: SvgPicture.asset('assets/icons/logo_signin.svg'),
-          ),
+        // child: SvgPicture.asset('assets/icons/logo_signin.svg'),
+        child: Text('Logo'),
+      ),
     );
   }
 }

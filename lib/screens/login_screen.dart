@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_siren/screens/home_screen.dart';
 import 'package:flutter_siren/screens/signup_screen.dart';
-import 'package:flutter_siren/screens/voice_screen.dart';
+import 'package:flutter_siren/widgets/account/input_field.dart';
+import 'package:flutter_siren/widgets/account/input_title.dart';
+import 'package:flutter_siren/widgets/account/next_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,7 +18,6 @@ class _LoginScreen extends State<LoginScreen> {
   final TextEditingController pwController =
       TextEditingController(); // pw controller
 
-  // onClick event
   void onClickLoginButtonHandler() async {
     if (idController.text.isNotEmpty && pwController.text.isNotEmpty) {
       // call login api
@@ -25,9 +26,10 @@ class _LoginScreen extends State<LoginScreen> {
       const result = true;
       if (result) {
         print('success login');
-        Navigator.push(
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const HomeScreen()),
+          (Route<dynamic> route) => false,
         );
       }
     }
@@ -76,83 +78,53 @@ class _LoginScreen extends State<LoginScreen> {
                 // ),
               ),
               // 2. id, pw
-              SizedBox(
-                height: 416,
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 46.0),
-                    child: Column(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 46.0),
+                child: Column(
+                  children: [
+                    // ID
+                    Column(
                       children: [
-                        // ID
-                        Column(
-                          children: [
-                            inputTitle('ID'),
-                            textField(idController),
-                            const SizedBox(
-                              height: 3.0,
-                            ),
-                          ],
+                        const InputTitle(
+                          title: 'ID',
                         ),
-                        const SizedBox(
-                          height: 14.0,
-                        ),
-                        // Password
-                        Column(
-                          children: [
-                            inputTitle('Password'),
-                            textField(pwController),
-                            const SizedBox(
-                              height: 3.0,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            onClickSignupButtonHandler();
-                          },
-                          child: const Text('signup'),
+                        InputField(
+                          inputController: idController,
+                          isSecret: false,
                         ),
                       ],
                     ),
-                  ),
-                ),
-              ),
-              // 3. login button
-              SizedBox(
-                height: (MediaQuery.of(context).size.height - 600) * 2 / 3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    // Password
+                    Column(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 31.0),
-                          child: GestureDetector(
-                            onTap: () {
-                              //onclick button
-                              onClickLoginButtonHandler();
-                            },
-                            child: Text(
-                              'login',
-                              style: TextStyle(
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: (idController.text.isNotEmpty &&
-                                          pwController.text.isNotEmpty)
-                                      ? Colors.black
-                                      : const Color(0xFFA3A3A3)),
-                            ),
-                          ),
+                        const InputTitle(
+                          title: 'Password',
+                        ),
+                        InputField(
+                          inputController: pwController,
+                          isSecret: true,
                         ),
                       ],
                     ),
                     const SizedBox(
                       height: 50.0,
-                    )
+                    ),
+                    // login button
+                    NextButton(
+                      text: 'Log In',
+                      onPressed: onClickLoginButtonHandler,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    // signup button
+                    NextButton(
+                      text: 'Sign up',
+                      onPressed: onClickSignupButtonHandler,
+                    ),
                   ],
                 ),
               ),
@@ -160,42 +132,6 @@ class _LoginScreen extends State<LoginScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget inputTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0, left: 10.0),
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 17.0),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget textField(TextEditingController controller) {
-    return TextField(
-      controller: controller,
-      cursorColor: const Color(0xFFA3A3A3), // 커서 색상 설정
-      decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10), // 둥근 테두리 설정
-            borderSide: const BorderSide(color: Color(0xFFA3A3A3)), // 기본 테두리 색상
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10), // 둥근 테두리 유지
-            borderSide:
-                const BorderSide(color: Color(0xFFA3A3A3)), // 포커스 상태에서도 같은 색 유지
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            vertical: 15.0,
-            horizontal: 15.0,
-          ) //글자와 textfield 사이에 padding
-          ),
     );
   }
 }
