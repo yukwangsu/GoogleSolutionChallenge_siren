@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_siren/screens/home_screen.dart';
+import 'package:flutter_siren/screens/landing_screen.dart';
 import 'package:flutter_siren/screens/signup_screen.dart';
 import 'package:flutter_siren/widgets/account/input_field.dart';
 import 'package:flutter_siren/widgets/account/input_title.dart';
@@ -28,7 +29,7 @@ class _LoginScreen extends State<LoginScreen> {
         print('success login');
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => const LandingScreen()),
           (Route<dynamic> route) => false,
         );
       }
@@ -95,8 +96,9 @@ class _LoginScreen extends State<LoginScreen> {
                       ],
                     ),
                     const SizedBox(
-                      height: 30.0,
+                      height: 20.0,
                     ),
+
                     // Password
                     Column(
                       children: [
@@ -112,6 +114,7 @@ class _LoginScreen extends State<LoginScreen> {
                     const SizedBox(
                       height: 50.0,
                     ),
+
                     // login button
                     NextButton(
                       text: 'Log In',
@@ -120,6 +123,7 @@ class _LoginScreen extends State<LoginScreen> {
                     const SizedBox(
                       height: 15,
                     ),
+
                     // signup button
                     NextButton(
                       text: 'Sign up',

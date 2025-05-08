@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_siren/screens/home_screen.dart';
+import 'package:flutter_siren/screens/landing_screen.dart';
 import 'package:flutter_siren/widgets/account/input_field.dart';
 import 'package:flutter_siren/widgets/account/input_title.dart';
 import 'package:flutter_siren/widgets/account/next_button.dart';
@@ -44,7 +44,7 @@ class _SignupScreen extends State<SignupScreen> {
         print('success signup');
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => const LandingScreen()),
           (Route<dynamic> route) => false,
         );
       }
