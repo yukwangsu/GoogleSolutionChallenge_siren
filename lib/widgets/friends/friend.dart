@@ -28,7 +28,10 @@ class Friend extends StatelessWidget {
       child: Row(
         children: [
           // user icon
-          const Icon(Icons.person),
+          Icon(
+            Icons.person_outline_sharp,
+            color: Colors.grey[600],
+          ),
           const SizedBox(
             width: 24,
           ),

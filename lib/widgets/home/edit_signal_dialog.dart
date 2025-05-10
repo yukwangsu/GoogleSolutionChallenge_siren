@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_siren/services/signal_service.dart';
 import 'package:flutter_siren/variables/variables.dart';
 import 'package:flutter_siren/widgets/dialog_button.dart';
 import 'package:flutter_siren/widgets/home/delete_signal.dart';
@@ -34,9 +35,10 @@ class _EditSignalDialogState extends State<EditSignalDialog> {
   void _appendSignal() {
     if (newSignalController.text.isNotEmpty) {
       setState(() {
-        // todo: append signal api
-        //
+        // add signal
+        SignalService.addSignalWordToList(newSignalController.text);
         widget.signals.add(newSignalController.text);
+        cachedSignalList!.add(newSignalController.text);
         newSignalController.text = '';
         FocusScope.of(context).unfocus();
       });
@@ -45,9 +47,10 @@ class _EditSignalDialogState extends State<EditSignalDialog> {
 
   void _removeSignal(String word) {
     setState(() {
-      // todo: remove signal api
-      //
+      // remove signal
+      SignalService.deleteSignalWord(word);
       widget.signals.remove(word);
+      cachedSignalList!.remove(word);
     });
   }
 

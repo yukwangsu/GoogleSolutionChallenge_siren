@@ -12,7 +12,6 @@ class Signal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: double.infinity,
       height: 37.0,
       decoration: BoxDecoration(
         color: const Color(grey),
@@ -23,11 +22,14 @@ class Signal extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
-      child: Center(
-        child: Text(
-          word,
-          style: const TextStyle(fontSize: 16),
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            word,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ],
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_siren/screens/home_screen.dart';
 import 'package:flutter_siren/screens/friends_screen.dart';
@@ -5,7 +6,9 @@ import 'package:flutter_siren/variables/variables.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LandingScreen extends StatefulWidget {
-  const LandingScreen({super.key});
+  const LandingScreen({
+    super.key,
+  });
 
   @override
   State<LandingScreen> createState() => _LandingScreenState();
@@ -14,15 +17,21 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const FriendsScreen(),
-  ];
+  late List<Widget> _screens;
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      const HomeScreen(),
+      const FriendsScreen(),
+    ];
   }
 
   @override
