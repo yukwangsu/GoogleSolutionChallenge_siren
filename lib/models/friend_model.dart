@@ -1,7 +1,7 @@
 class FriendModel {
-  final String id, name;
+  final String uid, username;
 
   FriendModel.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        name = json['name'];
+      : uid = json['uid'],
+        username = json['username'];
 }

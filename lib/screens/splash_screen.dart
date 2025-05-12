@@ -17,35 +17,9 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  // // result == -1: error, result: 0 (fail), result: 1 (success)
-  // void checkUser() async {
-  //   // // *** re-login *** // //
-  //   // final prefs = await SharedPreferences.getInstance();
-  //   // String? id = prefs.getString('sirenId');
-  //   // if (id != null) {
-  //   //   await prefs.remove('sirenId');
-  //   // }
-  //   // // *** re-login *** // //
-
-  //   // final result = await SigninService.checkUser();
-  //   const result = 0;
-
-  //   // wait 1.5s
-  //   await Future.delayed(const Duration(milliseconds: 1500));
-  //   if (result == 0) {
-  //     Navigator.pushReplacement(
-  //       context,
-  //       MaterialPageRoute(builder: (context) => const LoginScreen()),
-  //     );
-  //   } else if (result == 1) {
-  //     Navigator.pushReplacement(
-  //       context,
-  //       MaterialPageRoute(builder: (context) => const HomeScreen()),
-  //     );
-  //   }
-  // }
-
   void checkGoogleAuth() async {
+    // await GoogleSignIn().signOut();
+    // await FirebaseAuth.instance.signOut();
     // wait 1.5s
     await Future.delayed(const Duration(milliseconds: 1500));
     Navigator.pushReplacement(

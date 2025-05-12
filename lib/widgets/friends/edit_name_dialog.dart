@@ -4,16 +4,16 @@ import 'package:flutter_siren/variables/variables.dart';
 import 'package:flutter_siren/widgets/dialog_button.dart';
 import 'package:flutter_siren/widgets/input_text.dart';
 
-class AddFriendDialog extends StatefulWidget {
-  const AddFriendDialog({
+class EditNameDialog extends StatefulWidget {
+  const EditNameDialog({
     super.key,
   });
 
   @override
-  State<AddFriendDialog> createState() => _AddFriendDialogState();
+  State<EditNameDialog> createState() => _EditNameDialogState();
 }
 
-class _AddFriendDialogState extends State<AddFriendDialog> {
+class _EditNameDialogState extends State<EditNameDialog> {
   final TextEditingController inputController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 
@@ -28,16 +28,15 @@ class _AddFriendDialogState extends State<AddFriendDialog> {
     });
   }
 
-  void _appendFriend() async {
+  void _editName() {
     if (inputController.text.isNotEmpty) {
-      // add firend api
-      await UserService.addFriendToList(inputController.text);
-      await UserService.getFriendList().then((list) {
-        setState(() {
-          cachedFriendList = list; // cache
-        });
-        return list;
-      });
+      // max length
+      String tempName = inputController.text;
+      tempName = tempName.length > maxUsernameLength
+          ? tempName.substring(0, maxUsernameLength)
+          : tempName;
+      UserService.editUsername(tempName);
+      cachedUsername = tempName;
       inputController.text = '';
       Navigator.of(context).pop();
     }
@@ -66,7 +65,7 @@ class _AddFriendDialogState extends State<AddFriendDialog> {
                 children: [
                   // dialog title
                   const Text(
-                    'Add your friend',
+                    'Edit username',
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
@@ -77,19 +76,19 @@ class _AddFriendDialogState extends State<AddFriendDialog> {
                     height: 18.0,
                   ),
 
-                  // add user code input
+                  // add username input
                   InputText(
                     inputController: inputController,
-                    hint: 'Enter the code',
+                    hint: 'Enter new username',
                   ),
                   const SizedBox(
                     height: 15.0,
                   ),
 
-                  // confirm button
+                  // Edit button
                   DialogButton(
-                    text: 'Confirm',
-                    onPressed: _appendFriend,
+                    text: 'Edit',
+                    onPressed: _editName,
                   ),
                 ],
               ),
