@@ -26,7 +26,6 @@ class DialogButton extends StatelessWidget {
           backgroundColor: const Color(green),
           foregroundColor: Colors.white,
           elevation: 0,
-          // side: const BorderSide(color: Color(0xFFA3A3A3), width: 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
           ),

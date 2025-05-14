@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_siren/screens/google_signin_screen.dart';
 import 'package:flutter_siren/screens/home_screen.dart';
 import 'package:flutter_siren/screens/landing_screen.dart';
-import 'package:flutter_siren/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_siren/services/audio_service.dart';
+import 'package:flutter_siren/services/message_service.dart';
+import 'package:flutter_siren/variables/variables.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -38,11 +40,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        // child: SvgPicture.asset('assets/icons/logo_signin.svg'),
-        child: Text('Logo'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/Logo.png'),
+          ],
+        ),
       ),
     );
   }
@@ -65,6 +71,7 @@ class AuthGate extends StatelessWidget {
         if (snapshot.hasData) {
           return const LandingScreen();
         } else {
+          hasFcmToken = false;
           return const GoogleSigninScreen();
         }
       },

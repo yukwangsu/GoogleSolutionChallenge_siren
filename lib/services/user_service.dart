@@ -13,7 +13,6 @@ class UserService {
     if (snapshot.exists) {
       return snapshot.value as String;
     } else {
-      // not exist username(default username) => username
       await ref.set('default-name');
       return 'default-name';
     }
@@ -70,7 +69,10 @@ class UserService {
     // check new Uid
     final checkRef = FirebaseDatabase.instance.ref('username/$uid');
     final checkSnapshot = await checkRef.get();
-    if (!checkSnapshot.exists) return;
+    if (!checkSnapshot.exists || uid == user.uid) {
+      // not exist uid or my uid
+      return;
+    }
 
     // my friend list
     final myRef = FirebaseDatabase.instance.ref('friends/${user.uid}');

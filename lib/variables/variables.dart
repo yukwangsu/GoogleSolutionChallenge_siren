@@ -10,3 +10,4 @@ List<String>? cachedSignalList;
 String? cachedUsername;
 String? cachedUsercode;
 List<FriendModel>? cachedFriendList;
+bool hasFcmToken = true;

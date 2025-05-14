@@ -12,7 +12,6 @@ class DeleteSignal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: double.infinity,
       height: 37.0,
       decoration: BoxDecoration(
         border: Border.all(

@@ -55,8 +55,21 @@ class _SignInScreenState extends State<GoogleSigninScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // todo: logo
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assets/images/Logo.png'),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Text(
+                        'Sound-based Incident Recognition &\nEmergency Network',
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                   const SizedBox(
-                    height: 20,
+                    height: 100,
                   ),
                   // google sign in logo
                   ElevatedButton(

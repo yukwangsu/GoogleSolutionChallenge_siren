@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_siren/models/friend_model.dart';
+import 'package:flutter_siren/screens/splash_screen.dart';
 import 'package:flutter_siren/services/user_service.dart';
 import 'package:flutter_siren/variables/variables.dart';
 import 'package:flutter_siren/widgets/friends/add_friend_dialog.dart';
@@ -36,6 +37,11 @@ class _FriendsScreenState extends State<FriendsScreen> {
   Future<void> _signOut(BuildContext context) async {
     await GoogleSignIn().signOut();
     await FirebaseAuth.instance.signOut();
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const SplashScreen()),
+      (Route<dynamic> route) => false,
+    );
   }
 
   void getUsername() {
@@ -127,17 +133,16 @@ class _FriendsScreenState extends State<FriendsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 55.0,
+              height: 20.0,
             ),
 
             // Logo
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 6.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6.0),
               // todo: logo svg
-              child: Text('Logo'),
-            ),
-            const SizedBox(
-              height: 22.0,
+              child: Image.asset(
+                'assets/images/small_logo.png',
+              ),
             ),
 
             // scroll
