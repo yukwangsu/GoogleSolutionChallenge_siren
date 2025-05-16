@@ -11,3 +11,6 @@ String? cachedUsername;
 String? cachedUsercode;
 List<FriendModel>? cachedFriendList;
 bool hasFcmToken = true;
+
+double defaultLatitude = 37.5678;
+double defaultLongitude = 126.9393;

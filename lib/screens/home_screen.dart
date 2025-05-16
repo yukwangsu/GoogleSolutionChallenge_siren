@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_siren/services/audio_service.dart';
+import 'package:flutter_siren/services/location_service.dart';
 import 'package:flutter_siren/services/message_service.dart';
 // import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
 import 'package:flutter_siren/services/signal_service.dart';
@@ -61,6 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     // check fcm token
     checkFcmToken();
+
+    // check location perm
+    // LocationService.checkLocationPerm();
+    checkLocationPerm();
 
     _speech = stt.SpeechToText();
     _initSpeech();
@@ -290,21 +295,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
         // upload aac audio file to firebase storage
         await AudioService.uploadAacFileToFirebase(savedFilePath);
-
-        // // send aac audio file to firebase function
-        // await AudioService.testGet();
-        // await AudioService.uploadAacFile(savedFilePath);
-
-        // todo: send audio file and _recognizedText to api server
-        // _recognizedText to txt file
-        // print(_recognizedText);
-        // await saveStringToTxtFile(_recognizedText, savedFilePath);
-
-        // // type mp3 => wav
-        // final wavPath = savedFilePath.replaceAll(
-        //     RegExp(r'\.mp3$', caseSensitive: false), '.wav');
-        // print('wav path: $wavPath');
-        // // await convertMp3ToWav(savedFilePath, wavPath);
       } catch (e) {
         print('녹음 중단 중 오류 발생: $e');
       }
@@ -391,42 +381,6 @@ class _HomeScreenState extends State<HomeScreen> {
       print('파일이 존재하지 않습니다: $filePath');
     }
   }
-
-  // Future<void> convertMp3ToWav(String mp3Path, String wavPath) async {
-  //   final FlutterFFmpeg flutterFFmpeg = FlutterFFmpeg();
-  //   final result = await flutterFFmpeg.execute('-i "$mp3Path" "$wavPath"');
-
-  //   if (result == 0) {
-  //     print('Conversion successful!');
-  //   } else {
-  //     print('Conversion failed');
-  //   }
-  // }
-
-  // Future<void> saveStringToTxtFile(String content, String fileName) async {
-  //   try {
-  //     final textFilePath = changeExtensionToTxt(fileName);
-  //     final textFile = File(textFilePath);
-
-  //     // 파일에 내용 쓰기
-  //     await textFile.writeAsString(content);
-
-  //     print('파일 저장 완료: $textFile');
-  //   } catch (e) {
-  //     print('파일 저장 실패: $e');
-  //   }
-  // }
-
-  // String changeExtensionToTxt(String original) {
-  //   int dotIndex = original.lastIndexOf('.');
-  //   if (dotIndex != -1) {
-  //     // 확장자 제거 후 .txt 붙이기
-  //     return '${original.substring(0, dotIndex)}.txt';
-  //   } else {
-  //     // 확장자가 없는 경우 .txt 추가
-  //     return '$original.txt';
-  //   }
-  // }
 
   @override
   void dispose() {
