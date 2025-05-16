@@ -1,16 +1,43 @@
-# flutter_siren
+# Google Solution Challenge_siren
 
-A new Flutter project.
+![SIREN App Logo](assets/images/SIREN.png)
 
-## Getting Started
+SIREN is a mobile application designed to protect vulnerable individuals from hidden and unpredictable threats by acting as a bridge to their guardians and helping establish a strong social safety net.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## 🏁 Getting Started
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🔗 **Download the APK to try it out:**  
+[siren.apk – Google Drive](https://drive.google.com/file/d/1unLYNk3WryVMKQUOJDZWLiC12OlKNlLK/view?usp=sharing)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Features
+
+- **Log in with a Google account**  
+  Easy access using an existing Google account
+
+- **Keyword edit**  
+  Personal keyword setting is available
+
+- **Add friends**  
+  Easily copy and paste the exclusive code to add friends
+
+- **Real-time keyword voice detection and automatic recording**  
+  Immediately starts recording when the keyword is detected
+
+- **AI-powered risk situation assessment**  
+  Analyzes both voice and text data for a more accurate evaluation
+
+- **Sound & text context analysis using AI models**  
+  Evaluates danger level through recording and text for better judgment
+
+- **Automatic danger alert to friends (in-app contacts)**  
+  Alerts include both the recording file and the user's location data
+
+- **Speech-to-text transcription**  
+  Transcribes recorded voice to assess danger level and send the situation to friends or the police
+
+- **Secure storage of recorded audio**  
+  Recordings can be used as legal evidence if needed
+
+- **Location sharing during alerts**  
+  Sends the user’s location in emergency alerts
